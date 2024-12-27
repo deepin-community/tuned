@@ -1,4 +1,17 @@
 #!/usr/bin/make -f
+# See debhelper(7) (uncomment to enable)
+# output every command that modifies files on the build system.
+#export DH_VERBOSE = 1
+
+export DEB_PYTHON_INSTALL_LAYOUT=deb_system
+export deb_systemdsystemunitdir = $(shell pkg-config --variable=systemdsystemunitdir systemd | sed s,^/,,)
 
 %:
-	dh $@
+	dh $@ --with python3
+
+execute_after_dh_auto_build:
+	make html
+
+execute_before_dh_install:
+	make install-html DESTDIR=$(CURDIR)/debian/tmp
+	make install-ppd DESTDIR=$(CURDIR)/debian/tmp
