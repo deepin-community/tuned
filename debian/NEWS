@@ -1,0 +1,9 @@
+tuned (2.24.0-1) unstable; urgency=medium
+
+  The profiles shipped in the package were moved from /usr/lib/tuned/
+  to /usr/lib/tuned/profiles/.
+  User added profiles are now expected in /etc/tuned/profiles/.
+  You can change where tuned looks for profiles using the
+  `profile_dirs` option in /etc/tuned/tuned-main.conf
+
+ -- Evgeni Golov <evgeni@debian.org>  Tue, 29 Oct 2024 20:39:51 +0100
